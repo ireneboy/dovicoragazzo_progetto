@@ -1,0 +1,31 @@
+name: Build Automation
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del codice
+      uses: actions/checkout@v4
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Compilazione del progetto
+      run: mvn clean compile
+
+    - name: Esecuzione dei test
+      run: mvn test
+
+    - name: Analisi statica del codice
+      run: mvn package checkstyle:check
