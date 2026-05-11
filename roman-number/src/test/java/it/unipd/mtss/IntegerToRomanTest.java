@@ -1,4 +1,3 @@
-// INCOLLA QUI IL CONTENUTO DEL FILE LICENSE.TXT (Nomi, Cognomi, Matricole)
 ////
 // AURORA FRANCESCA DOVICO 2148002
 // IRENE RAGAZZO 2147010
@@ -12,18 +11,17 @@ import org.junit.Test;
 public class IntegerToRomanTest {
 
     @Test
-    public void testConversioneNumero1() {
+    public void testConversioneNumeriUnoATre() {
         assertEquals("I", IntegerToRoman.convert(1));
-    }
-
-    @Test
-    public void testConversioneNumero2() {
         assertEquals("II", IntegerToRoman.convert(2));
+        assertEquals("III", IntegerToRoman.convert(3));
     }
 
     @Test
-    public void testConversioneNumero3() {
-        assertEquals("III", IntegerToRoman.convert(3));
+    public void testConversioneNumeriQuattroASei() {
+        assertEquals("IV", IntegerToRoman.convert(4));
+        assertEquals("V", IntegerToRoman.convert(5));
+        assertEquals("VI", IntegerToRoman.convert(6));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -32,7 +30,7 @@ public class IntegerToRomanTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testNumeroMaggioreDiTre() {
-        IntegerToRoman.convert(4);
+    public void testNumeroMaggioreDiSei() {
+        IntegerToRoman.convert(7);
     }
 }
