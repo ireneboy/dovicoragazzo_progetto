@@ -30,6 +30,16 @@ public class IntegerToRomanTest {
         assertEquals("XX", IntegerToRoman.convert(20));
     }
 
+    @Test
+    public void testConversioneVentunoACinquanta() {
+        assertEquals("XXI", IntegerToRoman.convert(21));
+        assertEquals("XXX", IntegerToRoman.convert(30));
+        assertEquals("XL", IntegerToRoman.convert(40));
+        assertEquals("XLIV", IntegerToRoman.convert(44));
+        assertEquals("XLIX", IntegerToRoman.convert(49));
+        assertEquals("L", IntegerToRoman.convert(50));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNumeroSottoIlRange() {
         IntegerToRoman.convert(0);
@@ -37,7 +47,6 @@ public class IntegerToRomanTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testNumeroSopraIlRange() {
-        // Ora il limite è 20, quindi il primo numero che deve dare errore è 21
-        IntegerToRoman.convert(21);
+        IntegerToRoman.convert(51);
     }
 }
