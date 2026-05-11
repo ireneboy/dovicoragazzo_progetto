@@ -5,22 +5,37 @@
 
 package it.unipd.mtss;
 
+<span class="nc" id="L8">public class IntegerToRoman {</span>
 
-<span class="nc" id="L9">public class IntegerToRoman {</span>
-
-    
     public static String convert(int number) {
-<span class="fc bfc" id="L13" title="All 4 branches covered.">        if (number &lt; 1 || number &gt; 6) {</span>
-<span class="fc" id="L14">            throw new IllegalArgumentException(&quot;Il numero deve essere compreso tra 1 e 6.&quot;);</span>
-        }
-
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (number == 6) { return &quot;VI&quot;; }</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (number == 5) { return &quot;V&quot;; }</span>
-<span class="fc bfc" id="L19" title="All 2 branches covered.">        if (number == 4) { return &quot;IV&quot;; }</span>
-<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (number == 3) { return &quot;III&quot;; }</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (number == 2) { return &quot;II&quot;; }</span>
-        
-<span class="fc" id="L23">        return &quot;I&quot;;</span>
+<span class="fc bfc" id="L11" title="All 4 branches covered.">    if (number &lt; 1 || number &gt; 20) {</span>
+<span class="fc" id="L12">        throw new IllegalArgumentException(&quot;Numero fuori range (1-20)&quot;);</span>
     }
+
+    // Tabelle di conversione
+<span class="fc" id="L16">    int[] values = {10, 9, 5, 4, 1};</span>
+<span class="fc" id="L17">    String[] symbols = {&quot;X&quot;, &quot;IX&quot;, &quot;V&quot;, &quot;IV&quot;, &quot;I&quot;};</span>
+
+<span class="fc" id="L19">    StringBuilder roman = new StringBuilder();</span>
+
+<span class="fc bfc" id="L21" title="All 2 branches covered.">    for (int i = 0; i &lt; values.length; i++) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        while (number &gt;= values[i]) {</span>
+<span class="fc" id="L23">            roman.append(symbols[i]);</span>
+<span class="fc" id="L24">            number -= values[i];</span>
+        }
+    }
+<span class="fc" id="L27">    return roman.toString();</span>
+}
+
+private static String printX(int riga) {
+<span class="nc" id="L31">    String[] x = {</span>
+        &quot;__  __&quot;,
+        &quot;\\ \\/ /&quot;,
+        &quot; &gt;  &lt; &quot;,
+        &quot;/ ./\\ \\&quot;,
+        &quot;/_/  \\_\\&quot;
+    };
+<span class="nc" id="L38">    return x[riga];</span>
+}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
