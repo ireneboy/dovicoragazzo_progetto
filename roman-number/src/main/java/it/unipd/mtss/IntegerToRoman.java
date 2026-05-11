@@ -5,17 +5,21 @@
 
 package it.unipd.mtss;
 
+
 public class IntegerToRoman {
 
+    
     public static String convert(int number) {
-        if (number == 1) {
-            return "I";
-        } else if (number == 2) {
-            return "II";
-        } else if (number == 3) {
-            return "III";
-        } else {
-            throw new IllegalArgumentException("Per ora converto solo i numeri da 1 a 3.");
+        if (number < 1 || number > 6) {
+            throw new IllegalArgumentException("Il numero deve essere compreso tra 1 e 6.");
         }
+
+        if (number == 6) { return "VI"; }
+        if (number == 5) { return "V"; }
+        if (number == 4) { return "IV"; }
+        if (number == 3) { return "III"; }
+        if (number == 2) { return "II"; }
+        
+        return "I";
     }
 }
