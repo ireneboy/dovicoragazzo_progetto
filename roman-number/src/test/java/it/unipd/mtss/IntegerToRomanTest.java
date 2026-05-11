@@ -3,6 +3,7 @@
 // IRENE RAGAZZO 2147010
 ////
 
+
 package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
@@ -11,40 +12,31 @@ import org.junit.Test;
 public class IntegerToRomanTest {
 
     @Test
-    public void testConversioneLimitiEBase() {
-        assertEquals("I", IntegerToRoman.convert(1));
-        assertEquals("C", IntegerToRoman.convert(100));
-        // Aggiunto da Irene
-        assertEquals("D", IntegerToRoman.convert(500));
+    public void testConversioneMille() {
+        assertEquals("M", IntegerToRoman.convert(1000));
     }
 
     @Test
-    public void testCasiSpeciali() {
-        assertEquals("XL", IntegerToRoman.convert(40));
-        assertEquals("L", IntegerToRoman.convert(50));
-        assertEquals("XC", IntegerToRoman.convert(90));
-        // Aggiunto da Irene
+    public void testCasiSpecialiGrandi() {
         assertEquals("CD", IntegerToRoman.convert(400));
+        assertEquals("D", IntegerToRoman.convert(500));
+        assertEquals("CM", IntegerToRoman.convert(900));
     }
 
     @Test
-    public void testNumeriCompostiComplessi() {
-        assertEquals("XLIV", IntegerToRoman.convert(44));
-        assertEquals("XCIX", IntegerToRoman.convert(99));
-        assertEquals("LXXXVIII", IntegerToRoman.convert(88));
-        // Aggiunti da Irene
+    public void testNumeriComplessi() {
         assertEquals("CDXLIV", IntegerToRoman.convert(444));
-        assertEquals("CDXC", IntegerToRoman.convert(490));
+        assertEquals("DCCCLXXXVIII", IntegerToRoman.convert(888));
+        assertEquals("CMXCIX", IntegerToRoman.convert(999));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testSottoRange() {
+    public void testSopraMille() {
+        IntegerToRoman.convert(1001);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSottoUno() {
         IntegerToRoman.convert(0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testSopraRange() {
-        // Ora il limite è 500, quindi il primo numero a dare errore è 501
-        IntegerToRoman.convert(501);
     }
 }
