@@ -33,4 +33,36 @@ public class IntegerToRomanTest {
     public void testNumeroMaggioreDiSei() {
         IntegerToRoman.convert(7);
     }
+
+    @Test
+    public void testConversioneNumero7() {
+        assertEquals("VII", IntegerToRoman.convert(7));
+    }
+
+    @Test
+    public void testConversioneNumero8() {
+        assertEquals("VIII", IntegerToRoman.convert(8));
+    }
+
+    @Test
+    public void testConversioneNumero9() {
+        assertEquals("IX", IntegerToRoman.convert(9));
+    }
+
+    @Test
+    public void testConversioneNumero10() {
+        assertEquals("X", IntegerToRoman.convert(10));
+    }
+
+    // --- TEST DEI CASI LIMITE AGGIORNATI ---
+    @Test(expected = IllegalArgumentException.class)
+    public void testNumeroMinoreDiUno() {
+        IntegerToRoman.convert(0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNumeroMaggioreDiDieci() {
+        // Ora testiamo l'11, perché fino a 10 è tutto valido!
+        IntegerToRoman.convert(11);
+    }
 }
