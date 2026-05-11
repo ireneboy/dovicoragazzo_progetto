@@ -5,17 +5,16 @@
 
 package it.unipd.mtss;
 
-  
 public class IntegerToRoman {
 
     public static String convert(int number) {
-        if (number < 1 || number > 100) {
-            throw new IllegalArgumentException("Numero fuori range (1-100)");
+        if (number < 1 || number > 500) {
+            throw new IllegalArgumentException("Numero fuori range (1-500)");
         }
 
-        // Tabelle aggiornate per arrivare a 100
-        int[] values = {100, 90, 50, 40, 10, 9, 5, 4, 1};
-        String[] symbols = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        // Tabelle di conversione aggiornate fino a 500
+        int[] values = {500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] symbols = {"D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
         StringBuilder roman = new StringBuilder();
 
