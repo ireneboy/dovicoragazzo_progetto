@@ -5,27 +5,25 @@
 
 package it.unipd.mtss;
 
-  
-<span class="nc" id="L9">public class IntegerToRoman {</span>
+<span class="nc" id="L8">public class IntegerToRoman {</span>
 
     public static String convert(int number) {
-<span class="fc bfc" id="L12" title="All 4 branches covered.">        if (number &lt; 1 || number &gt; 100) {</span>
-<span class="fc" id="L13">            throw new IllegalArgumentException(&quot;Numero fuori range (1-100)&quot;);</span>
+<span class="fc bfc" id="L11" title="All 4 branches covered.">        if (number &lt; 1 || number &gt; 1000) {</span>
+<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;Numero fuori range (1-1000)&quot;);</span>
         }
 
-        // Tabelle aggiornate per arrivare a 100
-<span class="fc" id="L17">        int[] values = {100, 90, 50, 40, 10, 9, 5, 4, 1};</span>
-<span class="fc" id="L18">        String[] symbols = {&quot;C&quot;, &quot;XC&quot;, &quot;L&quot;, &quot;XL&quot;, &quot;X&quot;, &quot;IX&quot;, &quot;V&quot;, &quot;IV&quot;, &quot;I&quot;};</span>
+<span class="fc" id="L15">        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};</span>
+<span class="fc" id="L16">        String[] symbols = {&quot;M&quot;, &quot;CM&quot;, &quot;D&quot;, &quot;CD&quot;, &quot;C&quot;, &quot;XC&quot;, &quot;L&quot;, &quot;XL&quot;, &quot;X&quot;, &quot;IX&quot;, &quot;V&quot;, &quot;IV&quot;, &quot;I&quot;};</span>
 
-<span class="fc" id="L20">        StringBuilder roman = new StringBuilder();</span>
+<span class="fc" id="L18">        StringBuilder roman = new StringBuilder();</span>
 
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        for (int i = 0; i &lt; values.length; i++) {</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">            while (number &gt;= values[i]) {</span>
-<span class="fc" id="L24">                roman.append(symbols[i]);</span>
-<span class="fc" id="L25">                number -= values[i];</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (int i = 0; i &lt; values.length; i++) {</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            while (number &gt;= values[i]) {</span>
+<span class="fc" id="L22">                roman.append(symbols[i]);</span>
+<span class="fc" id="L23">                number -= values[i];</span>
             }
         }
-<span class="fc" id="L28">        return roman.toString();</span>
+<span class="fc" id="L26">        return roman.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
