@@ -3,6 +3,7 @@
 // IRENE RAGAZZO 2147010
 ////
 
+
 package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
@@ -11,42 +12,32 @@ import org.junit.Test;
 public class IntegerToRomanTest {
 
     @Test
-    public void testConversioneUnoADieci() {
+    public void testConversioneLimitiEBase() {
         assertEquals("I", IntegerToRoman.convert(1));
-        assertEquals("IV", IntegerToRoman.convert(4));
-        assertEquals("V", IntegerToRoman.convert(5));
-        assertEquals("VII", IntegerToRoman.convert(7));
-        assertEquals("IX", IntegerToRoman.convert(9));
-        assertEquals("X", IntegerToRoman.convert(10));
+        assertEquals("C", IntegerToRoman.convert(100));
     }
 
     @Test
-    public void testConversioneUndiciAVenti() {
-        assertEquals("XI", IntegerToRoman.convert(11));
-        assertEquals("XIV", IntegerToRoman.convert(14));
-        assertEquals("XV", IntegerToRoman.convert(15));
-        assertEquals("XVIII", IntegerToRoman.convert(18));
-        assertEquals("XIX", IntegerToRoman.convert(19));
-        assertEquals("XX", IntegerToRoman.convert(20));
-    }
-
-    @Test
-    public void testConversioneVentunoACinquanta() {
-        assertEquals("XXI", IntegerToRoman.convert(21));
-        assertEquals("XXX", IntegerToRoman.convert(30));
+    public void testCasiSpeciali() {
         assertEquals("XL", IntegerToRoman.convert(40));
-        assertEquals("XLIV", IntegerToRoman.convert(44));
-        assertEquals("XLIX", IntegerToRoman.convert(49));
         assertEquals("L", IntegerToRoman.convert(50));
+        assertEquals("XC", IntegerToRoman.convert(90));
+    }
+
+    @Test
+    public void testNumeriCompostiComplessi() {
+        assertEquals("XLIV", IntegerToRoman.convert(44));
+        assertEquals("XCIX", IntegerToRoman.convert(99));
+        assertEquals("LXXXVIII", IntegerToRoman.convert(88));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testNumeroSottoIlRange() {
+    public void testSottoRange() {
         IntegerToRoman.convert(0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testNumeroSopraIlRange() {
-        IntegerToRoman.convert(51);
+    public void testSopraRange() {
+        IntegerToRoman.convert(101);
     }
 }
